@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'to_work',
     'post',
+    'registration',
 ]
 
 MIDDLEWARE = [
@@ -76,6 +77,8 @@ WSGI_APPLICATION = 'to_work.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -106,9 +109,25 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-SESSION_ENGINE = "django.contrib.sessions.backends.file"
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 
 ACCOUNT_ACTIVATION_DAYS = 2
+
+
+AUTH_USER_EMAIL_UNIQUE = True
+
+EMAIL_HOST = 'localhost'
+
+EMAIL_PORT = 1025
+
+EMAIL_HOST_USER = 'root'
+
+EMAIL_HOST_PASSWORD = '1'
+
+EMAIL_USE_TLS = False
+
+DEFAULT_FROM_EMAIL = 'info@google.ru'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
